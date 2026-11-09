@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>By Eddeveloper — Estudio de Desarrollo de Apps Móviles y Bienestar Digital</title>
+  <meta name="description" content="Sitio oficial de By Eddeveloper. Creador de AmidoFlow y experiencias móviles enfocadas en productividad consciente, diseño limpio y privacidad Local-First." />
+  <meta name="author" content="By Eddeveloper" />
+  <style>
+    :root {
+      --bg-deep: #090F1A;
+      --bg-surface: #111C2D;
+      --bg-card: rgba(20, 31, 48, 0.78);
+      --border-card: rgba(255, 255, 255, 0.09);
+      --text-primary: #F3F7FC;
+      --text-secondary: #9EB1C9;
+      --cyan: #22D3EE;
+      --mint: #10B981;
+      --purple: #A78BFA;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+      background: radial-gradient(circle at 18% 8%, #152944 0%, var(--bg-deep) 52%, #060A12 100%);
+      color: var(--text-primary);
+      line-height: 1.65;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    a:hover {
+      opacity: 0.85;
+    }
+
+    .container {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border-card);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      background: rgba(9, 15, 26, 0.8);
+    }
+
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .brand-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--cyan), var(--purple));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 0.95rem;
+      color: #06101E;
+      box-shadow: 0 0 22px rgba(34, 211, 238, 0.35);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      font-size: 0.94rem;
+      font-weight: 500;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    /* Developer Hero */
+    .hero {
+      padding: 84px 0 60px;
+      text-align: center;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      background: rgba(34, 211, 238, 0.12);
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      color: var(--cyan);
+      font-size: 0.84rem;
+      font-weight: 600;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, #FFFFFF 20%, #93C5FD 65%, #34D399 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto 32px;
+      font-size: 1.12rem;
+      color: var(--text-secondary);
+    }
+
+    .cta-group {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--cyan), var(--mint));
+      color: #05131E;
+      font-weight: 700;
+      padding: 13px 26px;
+      border-radius: 14px;
+      font-size: 0.98rem;
+      box-shadow: 0 10px 28px rgba(16, 185, 129, 0.25);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 1px solid var(--border-card);
+      font-weight: 600;
+      padding: 13px 26px;
+      border-radius: 14px;
+      font-size: 0.98rem;
+    }
+
+    /* Developer Values */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+      margin-bottom: 64px;
+    }
+
+    .pillar-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 18px;
+      padding: 24px;
+    }
+
+    .pillar-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    .pillar-card p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+    }
+
+    /* Featured App Showcase */
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .section-sub {
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+      font-size: 1rem;
+    }
+
+    .app-showcase {
+      background: linear-gradient(145deg, rgba(20, 35, 56, 0.9), rgba(14, 23, 38, 0.92));
+      border: 1px solid rgba(34, 211, 238, 0.22);
+      border-radius: 26px;
+      padding: 38px;
+      margin-bottom: 64px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    .app-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .app-title-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .app-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #0EA5E9, #10B981);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 8px 24px rgba(16, 185, 129, 0.35);
+    }
+
+    .app-title-group h3 {
+      font-size: 1.65rem;
+      line-height: 1.2;
+    }
+
+    .app-package {
+      font-size: 0.84rem;
+      color: var(--cyan);
+      font-family: monospace;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .feature-box {
+      background: rgba(9, 15, 26, 0.55);
+      border: 1px solid var(--border-card);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .feature-box h4 {
+      font-size: 1.02rem;
+      margin-bottom: 6px;
+      color: var(--text-primary);
+    }
+
+    .feature-box p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+
+    /* Contact Card */
+    .contact-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 22px;
+      padding: 32px;
+      margin-bottom: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .contact-info h3 {
+      font-size: 1.35rem;
+      margin-bottom: 6px;
+    }
+
+    .contact-info p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .email-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 22px;
+      border-radius: 14px;
+      background: rgba(34, 211, 238, 0.12);
+      border: 1px solid rgba(34, 211, 238, 0.35);
+      color: var(--cyan);
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    /* Legal Sections */
+    .legal-section {
+      padding: 40px 0;
+      border-top: 1px solid var(--border-card);
+    }
+
+    .legal-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-card);
+      border-radius: 24px;
+      padding: 34px;
+      margin-bottom: 28px;
+    }
+
+    .legal-card h2 {
+      font-size: 1.55rem;
+      margin-bottom: 6px;
+      color: var(--cyan);
+    }
+
+    .legal-updated {
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    .legal-card h3 {
+      font-size: 1.06rem;
+      margin: 20px 0 6px;
+      color: var(--text-primary);
+    }
+
+    .legal-card p {
+      color: var(--text-secondary);
+      font-size: 0.94rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-card);
+      padding: 34px 0 46px;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav-bar">
+      <div class="brand">
+        <span class="brand-badge">ED</span>
+        <span>By Eddeveloper</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#sobre-mi">Desarrollador</a>
+        <a href="#apps">Aplicaciones</a>
+        <a href="#contacto">Soporte</a>
+        <a href="#privacidad">Privacidad</a>
+        <a href="#terminos">Términos</a>
+        <a href="app-ads.txt">app-ads.txt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Developer Hero -->
+    <section id="sobre-mi" class="hero">
+      <div class="pill">👨‍💻 Desarrollador Independiente en Google Play</div>
+      <h1>By Eddeveloper</h1>
+      <p>
+        Desarrollo de aplicaciones móviles en Android enfocadas en bienestar digital, hábitos sostenibles, arquitectura <strong>Local-First</strong> (tus datos siempre en tu dispositivo) e interfaces cuidadas al detalle.
+      </p>
+      <div class="cta-group">
+        <a class="btn-primary" href="#apps">Ver Aplicaciones</a>
+        <a class="btn-secondary" href="mailto:eddeveloper.22@gmail.com">Contacto: eddeveloper.22@gmail.com</a>
+      </div>
+    </section>
+
+    <section class="pillars">
+      <div class="pillar-card">
+        <h3>🔒 Privacidad Local-First</h3>
+        <p>Diseñamos nuestras aplicaciones para que tus datos personales, rutinas y registros vivan directamente en tu teléfono sin necesidad de cuentas invasivas.</p>
+      </div>
+      <div class="pillar-card">
+        <h3>✨ Diseño Consciente</h3>
+        <p>Interfaces fluidas en Jetpack Compose pensadas para reducir la fricción visual, fomentar la calma y acompañar tu progreso diario sin estrés.</p>
+      </div>
+      <div class="pillar-card">
+        <h3>🛠️ Soporte Directo</h3>
+        <p>Atención directa del desarrollador para resolver dudas, escuchar sugerencias y mejorar cada versión publicada en Google Play.</p>
+      </div>
+    </section>
+
+    <!-- Apps Section -->
+    <section id="apps">
+      <h2 class="section-title">Nuestras Aplicaciones</h2>
+      <p class="section-sub">Productos publicados oficialmente en Google Play Store por <strong>By Eddeveloper</strong>.</p>
+
+      <div class="app-showcase">
+        <div class="app-header">
+          <div class="app-title-group">
+            <div class="app-icon">🌱</div>
+            <div>
+              <h3>AmidoFlow — Rutinas, Enfoque y Jardín Evolutivo</h3>
+              <span class="app-package">com.byeddeveloper.amidoflow</span>
+            </div>
+          </div>
+          <a class="btn-primary" href="https://play.google.com/store/apps/details?id=com.byeddeveloper.amidoflow" target="_blank" rel="noopener">
+            Ver en Google Play
+          </a>
+        </div>
+
+        <p style="color: var(--text-secondary);">
+          AmidoFlow es tu santuario personal para construir rutinas paso a paso, cumplir micro-hábitos diarios, concentrarte con paisajes sonoros binaurales y cultivar un jardín interior que crece con tu constancia.
+        </p>
+
+        <div class="features-grid">
+          <div class="feature-box">
+            <h4>⏱️ Rutinas Guiadas</h4>
+            <p>Temporizadores por bloques con guía por voz, alertas suaves y estadísticas detalladas de cumplimiento.</p>
+          </div>
+          <div class="feature-box">
+            <h4>🌳 Jardín Estacional</h4>
+            <p>Convierte tus minutos de enfoque y hábitos cumplidos en nutrientes para hacer evolucionar especies botánicas únicas.</p>
+          </div>
+          <div class="feature-box">
+            <h4>🎧 Sonidos Flow & Theta</h4>
+            <p>Síntesis de audio relajante y ondas binaurales para sesiones de concentración profunda.</p>
+          </div>
+          <div class="feature-box">
+            <h4>🤖 Asistente IA de Rutinas</h4>
+            <p>Crea rutinas personalizadas al instante describiendo tu objetivo en lenguaje natural.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Developer Contact / Support -->
+    <section id="contacto">
+      <div class="contact-box">
+        <div class="contact-info">
+          <h3>Contacto y Soporte Oficial</h3>
+          <p>¿Tienes alguna duda sobre nuestras apps, suscripciones o necesitas soporte técnico? Escríbenos directamente:</p>
+        </div>
+        <a class="email-badge" href="mailto:eddeveloper.22@gmail.com">
+          ✉️ eddeveloper.22@gmail.com
+        </a>
+      </div>
+    </section>
+
+    <!-- Privacy Policy & Terms -->
+    <section id="privacidad" class="legal-section">
+      <div class="legal-card">
+        <h2>Política de Privacidad — By Eddeveloper (AmidoFlow)</h2>
+        <div class="legal-updated">Responsable: By Eddeveloper (eddeveloper.22@gmail.com) · Última actualización: Noviembre 2026</div>
+
+        <h3>1. Almacenamiento Local (Local-First)</h3>
+        <p>
+          AmidoFlow almacena tus rutinas, micro-hábitos, progreso del jardín, rachas y notas de reflexión directamente en el almacenamiento interno de tu dispositivo. By Eddeveloper no vende, alquila ni comercializa datos personales a terceros.
+        </p>
+
+        <h3>2. Asistente de IA (Creador de Rutinas)</h3>
+        <p>
+          Cuando utilizas el Creador de Rutinas con Inteligencia Artificial (disponible en los planes PRO y Super Flow), la descripción de la rutina que ingresas se transmite de forma cifrada (HTTPS) únicamente para generar los pasos sugeridos de la rutina.
+        </p>
+
+        <h3>3. Pagos y Suscripciones</h3>
+        <p>
+          Todas las suscripciones y compras dentro de la aplicación (PRO y Super Flow) son procesadas de forma segura por Google Play Billing. By Eddeveloper nunca recibe ni almacena información de tarjetas bancarias o métodos de pago.
+        </p>
+
+        <h3>4. Publicidad y Recompensas (Google AdMob)</h3>
+        <p>
+          En su versión gratuita, AmidoFlow integra el SDK oficial de Google Mobile Ads (AdMob) para ofrecer anuncios bonificados opcionales (como multiplicadores temporales de nutrientes o sonidos de enfoque por 24 horas) y un anuncio intersticial diario limitado. Google AdMob puede utilizar el identificador de publicidad del dispositivo y métricas técnicas para mostrar anuncios y prevenir el fraude publicitario. Los usuarios con suscripción PRO o Super Flow disfrutan de la aplicación 100% libre de anuncios.
+        </p>
+
+        <h3>5. Control del Usuario y Contacto</h3>
+        <p>
+          Puedes modificar o eliminar todos tus datos en cualquier momento desde los ajustes de la aplicación o desinstalándola. Para cualquier consulta relacionada con privacidad o soporte, puedes escribir a <a href="mailto:eddeveloper.22@gmail.com">eddeveloper.22@gmail.com</a>.
+        </p>
+      </div>
+
+      <div id="terminos" class="legal-card">
+        <h2>Términos y Condiciones de Uso</h2>
+        <div class="legal-updated">Desarrollador: By Eddeveloper · Contacto: eddeveloper.22@gmail.com</div>
+
+        <h3>1. Propósito de Bienestar y Organización</h3>
+        <p>
+          Las aplicaciones desarrolladas por By Eddeveloper, incluyendo AmidoFlow, son herramientas de productividad personal, enfoque y seguimiento de hábitos. No sustituyen diagnóstico, consejo ni tratamiento médico o psicológico profesional.
+        </p>
+
+        <h3>2. Suscripciones y Cancelaciones</h3>
+        <p>
+          Las suscripciones PRO y Super Flow se gestionan directamente a través de tu cuenta de Google Play Store, donde puedes consultarlas, modificarlas o cancelarlas en cualquier momento desde la sección "Pagos y suscripciones".
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 <strong>By Eddeveloper</strong> · Contacto oficial: <a href="mailto:eddeveloper.22@gmail.com">eddeveloper.22@gmail.com</a></p>
+      <p style="margin-top: 8px;">
+        <a href="#sobre-mi">Desarrollador</a> · <a href="#apps">AmidoFlow</a> · <a href="#privacidad">Privacidad</a> · <a href="#terminos">Términos</a> · <a href="app-ads.txt">app-ads.txt</a>
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
